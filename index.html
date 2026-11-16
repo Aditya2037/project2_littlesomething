@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f5f0e7">
+<title>A little something for you</title>
+
+<style>
+:root {
+  --paper: #f5f0e7;
+  --ink: #263c76;
+  --muted: #766b61;
+  --card: #e8dfd1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+main {
+  width: min(100%, 430px);
+  text-align: center;
+  padding: 30px 22px;
+}
+
+.eyebrow {
+  font: 600 11px Arial, sans-serif;
+  letter-spacing: .19em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 22px 0 8px;
+  font-size: clamp(38px, 11vw, 52px);
+  font-style: italic;
+}
+
+.intro {
+  color: var(--muted);
+  font: 16px/1.6 Arial, sans-serif;
+}
+
+.doodle {
+  margin: 27px auto 20px;
+  width: 130px;
+  height: 82px;
+}
+
+.note {
+  margin: 0 0 22px;
+  color: var(--muted);
+  font: 14px/1.6 Arial, sans-serif;
+}
+
+button, .play-link {
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  padding: 17px 18px;
+  background: var(--ink);
+  color: white;
+  font: 600 14px Arial, sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button:active, .play-link:active {
+  transform: scale(.985);
+}
+
+.reveal {
+  display: none;
+  margin-top: 26px;
+  padding: 25px 16px;
+  border-radius: 18px;
+  background: var(--card);
+}
+
+.reveal.show {
+  display: block;
+  animation: appear .5s ease both;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.music-icon {
+  font-size: 38px;
+  margin-bottom: 15px;
+}
+
+.song-caption {
+  color: var(--muted);
+  font: 14px/1.5 Arial, sans-serif;
+  margin-bottom: 22px;
+}
+
+.closing {
+  margin: 24px 0 0;
+  font-size: 16px;
+  font-style: italic;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<main>
+
+  <h1>Hey, Papa! :3</h1>
+
+  <p class="intro">
+    Enti, QR kuda scan chesesava? 😂
+  </p>
+
+  <svg class="doodle" viewBox="0 0 150 90"
+       fill="none" aria-label="Headphones doodle">
+
+    <path d="M24 53V43C24 15 43 5 75 5s51 10 51 38v10"
+      stroke="#263c76" stroke-width="3.5"
+      stroke-linecap="round"/>
+
+    <rect x="15" y="45" width="22" height="35"
+      rx="9" transform="rotate(-8 15 45)"
+      stroke="#263c76" stroke-width="3"/>
+
+    <rect x="113" y="43" width="22" height="35"
+      rx="9" transform="rotate(8 113 43)"
+      stroke="#263c76" stroke-width="3"/>
+
+    <path d="M54 27c8-7 31-8 42 0"
+      stroke="#263c76" stroke-width="2"
+      stroke-linecap="round" stroke-dasharray="2 6"/>
+
+    <path d="M67 64c5 5 12 5 17 0"
+      stroke="#263c76" stroke-width="2"
+      stroke-linecap="round"/>
+  </svg>
+
+  <p class="note">
+    Sare sare . click this...
+  </p>
+
+  <button id="revealButton">
+    Hmmmmmmm........
+  </button>
+
+  <section id="songReveal" class="reveal">
+
+    <div class="music-icon">♫</div>
+
+    <p class="song-caption">
+      Okay, headphones pettuko.
+      This one's for you.
+    </p>
+
+    <a class="play-link"
+       href="https://www.youtube.com/watch?v=puyhcl4g1Kw"
+       target="_blank"
+       rel="noopener noreferrer">
+       Play the song
+    </a>
+
+    <p class="closing">
+      Okay, that's all. Don't overthink it. :p
+    </p>
+
+  </section>
+
+</main>
+
+<script>
+const button = document.getElementById("revealButton");
+const reveal = document.getElementById("songReveal");
+
+button.addEventListener("click", () => {
+  reveal.classList.add("show");
+
+  button.textContent = "Surprise revealed";
+  button.disabled = true;
+  button.style.opacity = "0.7";
+
+  reveal.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
+});
+</script>
+
+</body>
+</html>
